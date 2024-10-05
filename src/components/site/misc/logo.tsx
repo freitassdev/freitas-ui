@@ -9,7 +9,7 @@ export default function Logo() {
     const logo = theme === "light" ? darkLogo : lightLogo;
     return (
         <div>
-            <Image src={logo} alt="Freitas UI Light Logo" className="w-auto h-12 max-sm:h-10" />
+            <Image src={logo} alt="Freitas UI Logo" className="w-auto h-12 max-sm:h-10" />
         </div>
     );
 }

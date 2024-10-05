@@ -14,11 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <body className="antialiased">
+      <body className="antialiased">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
-        </body>
-      </ThemeProvider>
+        </ThemeProvider>  
+      </body>
     </html>
   );
 }
