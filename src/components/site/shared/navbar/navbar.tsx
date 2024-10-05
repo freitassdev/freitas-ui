@@ -3,11 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useScroll } from "framer-motion";
 import Logo from "@/components/site/misc/logo";
-import GithubButton from "../github-button/github-button";
 import Input from "@/components/ui/input";
 import { LuSearch } from "react-icons/lu";
 import Link from "next/link";
 import ThemeToggle from "../../misc/theme-toggle";
+import RainbowButton from "@/components/ui/rainbow-button";
+import { FaGithub } from "react-icons/fa";
 
 
 interface NavbarProps {
@@ -49,7 +50,10 @@ export default function Navbar({ isDocsPage = true }: NavbarProps) {
                         </Link>
                     </div>
                     <Input placeholder="Search in docs" iconPosition="right" icon={<LuSearch />} />
-                    <GithubButton />
+                    <RainbowButton variant="opaque">
+                        <FaGithub className='mr-2 ' />
+                        See on GitHub
+                    </RainbowButton>
                     <ThemeToggle />
                 </div>
             </nav>

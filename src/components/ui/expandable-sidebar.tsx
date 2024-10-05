@@ -115,8 +115,8 @@ ExpandableSidebarFooter.displayName = "ExpandableSidebarFooter"
 ExpandableSidebarHeader.displayName = "ExpandableSidebarHeader"
 ExpandableSidebarPortal.displayName = "ExpandableSidebarPortal"
 export {
-    ExpandableSidebar, 
-    ExpandableSidebarClose, 
+    ExpandableSidebar,
+    ExpandableSidebarClose,
     ExpandableSidebarContent,
     ExpandableSidebarDescription,
     ExpandableSidebarFooter,

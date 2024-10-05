@@ -22,7 +22,7 @@
     --card-foreground: 0 0% 0%;
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --primary: 208.3 96.55% 22.7%;
+    --primary: 205, 28%, 21%; /* --primary: 208.3 96.55% 22.7%; */
     --primary-foreground: 0 0% 100%;
     --secondary: 207.43 68.63% 90%;
     --secondary-foreground: 204 9% 31%;
