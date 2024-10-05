@@ -4,14 +4,14 @@ import { cn } from "@/lib/utils"
 
 
 const buttonVariants = cva(
-    "bg-background text-primary border border-input rounded-xl transition-all duration-300 outline-none focus:border-transparent",
+    "bg-background text-primary border border-input rounded-xl transition-all duration-300 outline-none focus:border-transparent flex flex-row items-center justify-center gap-2",
     {
         variants: {
             variant: {
                 default:
-                    "bg-card border-muted text-primary focus:ring-1 focus:ring-border",
+                    "bg-card border-muted text-primary focus:ring-1 focus:ring-border hover:bg-muted",
                 outline:
-                    "bg-transparent border-muted text-primary focus:ring-1 focus:ring-border",
+                    "bg-transparent border-muted text-primary focus:ring-1 focus:ring-border hover:bg-card/90",
                 ghost:
                     "bg-transparent border-transparent text-primary hover:bg-card hover:border-muted focus:ring-1 focus:ring-border",
             },

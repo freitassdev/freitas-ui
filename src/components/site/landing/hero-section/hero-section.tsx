@@ -3,6 +3,7 @@ import GradientText from '@/components/ui/gradient-text';
 import RainbowButton from '@/components/ui/rainbow-button';
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
+import Button from '@/components/ui/button';
 
 const HeroSection: React.FC = () => {
     return (
@@ -18,8 +19,12 @@ const HeroSection: React.FC = () => {
                 Modern, customizable, animated and easy to use components for your next project. Free and open source.
             </p>
             <div className="flex justify-center gap-4">
-                <button className="btn btn-primary btn-lg">Começar agora</button>
-                <button className="btn btn-outline btn-lg">Ver documentação</button>
+                <Button>
+                    Getting Started
+                </Button>
+                <Button variant="outline">
+                    See Components
+                </Button>
             </div>
             <div className='max-w-[800px] w-full mt-10 h-96'>
                 <ScrollContainer>

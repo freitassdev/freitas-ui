@@ -56,6 +56,7 @@ export default function RainbowButton({ variant, size, className, children, opaq
                 ease: "linear",
                 repeat: Number.POSITIVE_INFINITY,
             }}
+            
             {...props}
         >
             {variant === "opaque" && <div className={cn('absolute inset-0 m-[4px] rounded-lg bg-background/40 backdrop-blur-sm', opaqueClassName)}></div>}
