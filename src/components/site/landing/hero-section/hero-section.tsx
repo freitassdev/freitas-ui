@@ -1,4 +1,4 @@
-import ContainerScroll from '@/components/ui/container-scroll';
+import ScrollContainer from '@/components/ui/scroll-container';
 import GradientText from '@/components/ui/gradient-text';
 import RainbowButton from '@/components/ui/rainbow-button';
 import React from 'react';
@@ -8,7 +8,7 @@ const HeroSection: React.FC = () => {
     return (
         <section className="flex flex-col items-center justify-center py-20 text-center">
             <RainbowButton className='rounded-full' variant="opaque" opaqueClassName="rounded-full">
-                <FaStar className='mr-2'/>
+                <FaStar className='mr-2' />
                 Star this project on GitHub
             </RainbowButton>
             <h1 className="text-6xl font-extrabold mb-6">
@@ -21,9 +21,12 @@ const HeroSection: React.FC = () => {
                 <button className="btn btn-primary btn-lg">Começar agora</button>
                 <button className="btn btn-outline btn-lg">Ver documentação</button>
             </div>
-            <ContainerScroll>
-                Teste caralho filha da puta 
-            </ContainerScroll>
+            <div className='max-w-[800px] w-full mt-10 h-96'>
+                <ScrollContainer>
+                    Teste caralho filha da puta
+                </ScrollContainer>
+            </div>
+
         </section>
     );
 };
