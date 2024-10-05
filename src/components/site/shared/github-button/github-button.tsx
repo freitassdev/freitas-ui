@@ -29,7 +29,7 @@ export default function GithubButton() {
             target='_blank'
         >
             <div className='w-[8.5rem] h-7 rounded-lg absolute bg-background/40 backdrop-blur-sm'></div>
-            <div className='relative z-10 flex flex-row items-center justify-center'>
+            <div className='relative z-10 flex flex-row items-center justify-center text-white'>
                 <FaGithub className="mr-2" />
                 See on GitHub
             </div>

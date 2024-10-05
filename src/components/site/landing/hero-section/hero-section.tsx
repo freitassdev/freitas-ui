@@ -5,7 +5,7 @@ const HeroSection: React.FC = () => {
     return (
         <section className="py-20 text-center">
             <h1 className="text-6xl font-extrabold mb-6">
-                Building your <GradientText text="UI dreams" deg="90deg" /> 
+                Build ing your <GradientText text="UI dreams" deg="90deg" />
             </h1>
             <p className="text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
                 Modern, customizable, animated and easy to use components for your next project. Free and open source.

@@ -7,6 +7,7 @@ import GithubButton from "../github-button/github-button";
 import Input from "@/components/ui/input";
 import { LuSearch } from "react-icons/lu";
 import Link from "next/link";
+import ThemeToggle from "../../misc/theme-toggle";
 
 
 interface NavbarProps {
@@ -49,6 +50,7 @@ export default function Navbar({ isDocsPage = true }: NavbarProps) {
                     </div>
                     <Input placeholder="Search in docs" iconPosition="right" icon={<LuSearch />} />
                     <GithubButton />
+                    <ThemeToggle />
                 </div>
             </nav>
         </div>
