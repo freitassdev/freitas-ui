@@ -1,0 +1,126 @@
+"use client";
+import { useRef, useState } from "react";
+import { cn } from "@/lib/utils";
+import { useMotionValueEvent, useScroll } from "framer-motion";
+import Logo from "@/components/site/misc/logo";
+import Input from "@/components/ui/input";
+import { LuSearch } from "react-icons/lu";
+import Link from "next/link";
+import ThemeToggle from "../../misc/theme-toggle";
+import RainbowButton from "@/components/ui/rainbow-button";
+import { FaGithub } from "react-icons/fa";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { LuX } from "react-icons/lu";
+
+import {
+    ExpandableSidebar,
+    ExpandableSidebarClose,
+    ExpandableSidebarContent,
+    ExpandableSidebarFooter,
+    ExpandableSidebarHeader,
+    ExpandableSidebarTrigger
+} from "@/components/ui/expandable-sidebar";
+import { Separator } from "@/components/ui/separator";
+import Button from "@/components/ui/button";
+import { GoRocket } from "react-icons/go";
+import { RxComponent1 } from "react-icons/rx";
+
+interface NavbarProps {
+    isDocsPage?: boolean;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function Navbar({ isDocsPage = true }: NavbarProps) {
+    const navRef = useRef<HTMLDivElement>(null);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const { scrollYProgress } = useScroll();
+
+    useMotionValueEvent(scrollYProgress, "change", (y: number) => {
+        if (y > 0) {
+            setIsScrolled(true);
+        } else {
+            setIsScrolled(false);
+        }
+    });
+    return (
+        <div className={cn("w-full h-20 flex flex-row items-center justify-center top-0 fixed inset-x-0 z-50  duration-300", isScrolled ? "bg-background/70 saturate-100 backdrop-blur-[6px] shadow-md" : "bg-transparent")}>
+            <nav className="flex items-center justify-between  px-2  transition-all  max-md:w-full max-md:px-4 md:w-[800px] lg:w-[1000px] xl:w-[1300px] 2xl:w-[1500px]" ref={navRef}>
+                <div className="flex flex-row items-center justify-center gap-3">
+                    <Link href="/">
+                        <Logo />
+                    </Link>
+                </div>
+                <div className="flex flex-row items-center justify-center gap-2">
+                    <div className="flex flex-row items-center justify-center gap-5 mr-2">
+                        <Link href="/docs" className="max-md:hidden text-primary hover:text-primary/80 transition-all duration-300">
+                            Getting Started
+                        </Link>
+                        <Link href="/docs" className="max-md:hidden text-primary hover:text-primary/80 transition-all duration-300">
+                            Components
+                        </Link>
+                    </div>
+                    <Input className="max-md:hidden" iconClassName="max-md:hidden" placeholder="Search in docs" iconPosition="right" icon={<LuSearch />} />
+                    <Link href="https://github.com/freitassdev/freitas-ui" target="_blank">
+                        <RainbowButton className="max-md:hidden" variant="opaque">
+                            <FaGithub className='mr-2 ' />
+                            See on GitHub
+                        </RainbowButton>
+                    </Link>
+                    <ThemeToggle className="flex max-md:hidden" />
+                    <div className="hidden max-md:block">
+                        <ExpandableSidebar>
+                            <ExpandableSidebarTrigger asChild>
+                                <RainbowButton variant="opaque">
+                                    <FaBarsStaggered className="rotate-180" />
+                                    <span className="sr-only">toggle menu</span>
+                                </RainbowButton>
+                            </ExpandableSidebarTrigger>
+                            <ExpandableSidebarContent className="flex flex-col justify-between">
+                                <div className="flex flex-col w-full ">
+                                    <ExpandableSidebarHeader className="flex flex-row items-center justify-between">
+                                        <Link href="/">
+                                            <Logo />
+                                        </Link>
+                                        <ExpandableSidebarClose asChild>
+                                            <RainbowButton variant="opaque" className="max-w-9">
+                                                <LuX />
+                                            </RainbowButton>
+                                        </ExpandableSidebarClose>
+                                    </ExpandableSidebarHeader>
+                                    <div className="flex flex-col items-center justify-center gap-2 w-full mt-4">
+                                        <Link href="https://github.com/freitassdev/freitas-ui" className="w-full" target="_blank">
+                                            <RainbowButton className="w-full flex md:hidden justify-between" variant="opaque">
+                                                <FaGithub className='mr-2 ' />
+                                                See on GitHub
+                                            </RainbowButton>
+                                        </Link>
+                                        <Input
+                                            className="block w-full md:hidden"
+                                            placeholder="Search in docs"
+                                            iconPosition="left"
+                                            icon={<LuSearch />} />
+                                        <Separator variant="rainbow" className="w-full my-4" />
+
+                                        <Link href="/docs/getting-started" className="w-full" target="_blank">
+                                            <Button className="w-full flex md:hidden justify-start" icon={<GoRocket />}>
+                                                Getting Started
+                                            </Button>
+                                        </Link>
+                                        <Link href="/docs/components" className="w-full" target="_blank">
+                                            <Button className="w-full flex md:hidden justify-start" icon={<RxComponent1 />}>
+                                                Components
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                </div>
+                                <ExpandableSidebarFooter>
+                                    <ThemeToggle className="flex md:hidden" />
+                                </ExpandableSidebarFooter>
+                            </ExpandableSidebarContent>
+                        </ExpandableSidebar>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    );
+}
