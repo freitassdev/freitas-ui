@@ -59,7 +59,7 @@ export default function Navbar({ isDocsPage = true }: NavbarProps) {
                             Components
                         </Link>
                     </div>
-                    <Input className="max-md:hidden" iconClassName="max-md:hidden" placeholder="Search in docs" iconPosition="right" icon={<LuSearch />} />
+                    <Input className="max-md:hidden" containerClassName="w-fit" iconClassName="max-md:hidden" placeholder="Search in docs" iconPosition="right" icon={<LuSearch />} />
                     <Link href="https://github.com/freitassdev/freitas-ui" target="_blank">
                         <RainbowButton className="max-md:hidden" variant="opaque">
                             <FaGithub className='mr-2 ' />

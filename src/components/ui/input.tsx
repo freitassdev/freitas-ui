@@ -32,12 +32,13 @@ interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
     icon?: React.ReactNode;
     iconPosition?: "left" | "right";
     iconClassName?: string;
+    containerClassName?: string;
 }
 
-export default function Input({ className, iconClassName, variant, size, icon, iconPosition = "left", ...props }: InputProps) {
+export default function Input({ className, iconClassName, containerClassName, variant, size, icon, iconPosition = "left", ...props }: InputProps) {
     const Icon = icon;
     return (
-        <div className="relative w-full">
+        <div className={cn("relative w-full", containerClassName)}>
             {icon && (
                 <div className={cn(
                     "absolute top-1/2 -translate-y-1/2 text-muted-foreground",
