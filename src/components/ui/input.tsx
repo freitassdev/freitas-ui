@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 
 const inputVariants = cva(
-    "bg-background text-primary border border-input rounded-xl transition-all duration-300 outline-none focus:border-transparent",
+    "bg-background w-full text-primary border border-input rounded-xl transition-all duration-300 outline-none focus:border-transparent",
     {
         variants: {
             variant: {
@@ -31,16 +31,18 @@ interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
     VariantProps<typeof inputVariants> {
     icon?: React.ReactNode;
     iconPosition?: "left" | "right";
+    iconClassName?: string;
 }
 
-export default function Input({ className, variant, size, icon, iconPosition = "left", ...props }: InputProps) {
+export default function Input({ className, iconClassName, variant, size, icon, iconPosition = "left", ...props }: InputProps) {
     const Icon = icon;
     return (
-        <div className="relative">
+        <div className="relative w-full">
             {icon && (
                 <div className={cn(
                     "absolute top-1/2 -translate-y-1/2 text-muted-foreground",
-                    iconPosition === "left" ? "left-3" : "right-3"
+                    iconPosition === "left" ? "left-3" : "right-3",
+                    iconClassName
                 )}>
                     {Icon}
                 </div>

@@ -29,13 +29,13 @@ const buttonVariants = cva(
     }
 )
 
-interface InputProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'>,
+interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'>,
     VariantProps<typeof buttonVariants> {
     icon?: React.ReactNode;
     iconPosition?: "left" | "right";
 }
 
-export default function Button({ className, variant, size, icon, iconPosition = "left", children, ...props }: InputProps) {
+export default function Button({ className, variant, size, icon, iconPosition = "left", children, ...props }: ButtonProps) {
     const Icon = icon;
     return (
         <div className="relative">

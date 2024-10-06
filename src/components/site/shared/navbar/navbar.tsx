@@ -9,7 +9,21 @@ import Link from "next/link";
 import ThemeToggle from "../../misc/theme-toggle";
 import RainbowButton from "@/components/ui/rainbow-button";
 import { FaGithub } from "react-icons/fa";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { LuX } from "react-icons/lu";
 
+import {
+    ExpandableSidebar,
+    ExpandableSidebarClose,
+    ExpandableSidebarContent,
+    ExpandableSidebarFooter,
+    ExpandableSidebarHeader,
+    ExpandableSidebarTrigger
+} from "@/components/ui/expandable-sidebar";
+import { Separator } from "@/components/ui/separator";
+import Button from "@/components/ui/button";
+import { GoRocket } from "react-icons/go";
+import { RxComponent1 } from "react-icons/rx";
 
 interface NavbarProps {
     isDocsPage?: boolean;
@@ -38,19 +52,73 @@ export default function Navbar({ isDocsPage = true }: NavbarProps) {
                 </div>
                 <div className="flex flex-row items-center justify-center gap-2">
                     <div className="flex flex-row items-center justify-center gap-5 mr-2">
-                        <Link href="/docs" className="text-primary hover:text-primary/80 transition-all duration-300">
+                        <Link href="/docs" className="max-md:hidden text-primary hover:text-primary/80 transition-all duration-300">
                             Getting Started
                         </Link>
-                        <Link href="/docs" className="text-primary hover:text-primary/80 transition-all duration-300">
+                        <Link href="/docs" className="max-md:hidden text-primary hover:text-primary/80 transition-all duration-300">
                             Components
                         </Link>
                     </div>
-                    <Input placeholder="Search in docs" iconPosition="right" icon={<LuSearch />} />
-                    <RainbowButton variant="opaque">
-                        <FaGithub className='mr-2 ' />
-                        See on GitHub
-                    </RainbowButton>
-                    <ThemeToggle />
+                    <Input className="max-md:hidden" iconClassName="max-md:hidden" placeholder="Search in docs" iconPosition="right" icon={<LuSearch />} />
+                    <Link href="https://github.com/freitassdev/freitas-ui" target="_blank">
+                        <RainbowButton className="max-md:hidden" variant="opaque">
+                            <FaGithub className='mr-2 ' />
+                            See on GitHub
+                        </RainbowButton>
+                    </Link>
+                    <ThemeToggle className="flex max-md:hidden" />
+                    <div className="hidden max-md:block">
+                        <ExpandableSidebar>
+                            <ExpandableSidebarTrigger asChild>
+                                <RainbowButton variant="opaque">
+                                    <FaBarsStaggered className="rotate-180" />
+                                    <span className="sr-only">toggle menu</span>
+                                </RainbowButton>
+                            </ExpandableSidebarTrigger>
+                            <ExpandableSidebarContent className="flex flex-col justify-between">
+                                <div className="flex flex-col w-full ">
+                                    <ExpandableSidebarHeader className="flex flex-row items-center justify-between">
+                                        <Link href="/">
+                                            <Logo />
+                                        </Link>
+                                        <ExpandableSidebarClose asChild>
+                                            <RainbowButton variant="opaque" className="max-w-9">
+                                                <LuX />
+                                            </RainbowButton>
+                                        </ExpandableSidebarClose>
+                                    </ExpandableSidebarHeader>
+                                    <div className="flex flex-col items-center justify-center gap-2 w-full mt-4">
+                                        <Link href="https://github.com/freitassdev/freitas-ui" className="w-full" target="_blank">
+                                            <RainbowButton className="w-full flex md:hidden justify-between" variant="opaque">
+                                                <FaGithub className='mr-2 ' />
+                                                See on GitHub
+                                            </RainbowButton>
+                                        </Link>
+                                        <Input
+                                            className="block w-full md:hidden"
+                                            placeholder="Search in docs"
+                                            iconPosition="left"
+                                            icon={<LuSearch />} />
+                                        <Separator variant="rainbow" className="w-full my-4" />
+
+                                        <Link href="/docs/getting-started" className="w-full" target="_blank">
+                                            <Button className="w-full flex md:hidden justify-start" icon={<GoRocket />}>
+                                                Getting Started
+                                            </Button>
+                                        </Link>
+                                        <Link href="/docs/components" className="w-full" target="_blank">
+                                            <Button className="w-full flex md:hidden justify-start" icon={<RxComponent1 />}>
+                                                Components
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                </div>
+                                <ExpandableSidebarFooter>
+                                    <ThemeToggle className="flex md:hidden" />
+                                </ExpandableSidebarFooter>
+                            </ExpandableSidebarContent>
+                        </ExpandableSidebar>
+                    </div>
                 </div>
             </nav>
         </div>
