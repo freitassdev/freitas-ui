@@ -30,7 +30,7 @@ interface NavbarProps {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Navbar({ isDocsPage = true }: NavbarProps) {
+export default function Navbar({ isDocsPage = false }: NavbarProps) {
     const navRef = useRef<HTMLDivElement>(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollYProgress } = useScroll();
@@ -43,7 +43,9 @@ export default function Navbar({ isDocsPage = true }: NavbarProps) {
         }
     });
     return (
-        <div className={cn("w-full h-20 flex flex-row items-center justify-center top-0 fixed inset-x-0 z-50  duration-300", isScrolled ? "bg-background/70 saturate-100 backdrop-blur-[6px] shadow-md" : "bg-transparent")}>
+        <div className={cn("w-full h-20 flex flex-row items-center justify-center top-0 fixed inset-x-0 z-40  duration-300", 
+        isScrolled ? "bg-background/70 saturate-100 backdrop-blur-[6px]" : "bg-transparent",
+        isScrolled && !isDocsPage ? "shadow-md" : "")}>
             <nav className="flex items-center justify-between  px-2  transition-all  max-md:w-full max-md:px-4 md:w-[800px] lg:w-[1000px] xl:w-[1300px] 2xl:w-[1500px]" ref={navRef}>
                 <div className="flex flex-row items-center justify-center gap-3">
                     <Link href="/">
@@ -59,7 +61,7 @@ export default function Navbar({ isDocsPage = true }: NavbarProps) {
                             Components
                         </Link>
                     </div>
-                    <Input className="max-md:hidden" iconClassName="max-md:hidden" placeholder="Search in docs" iconPosition="right" icon={<LuSearch />} />
+                    <Input className="max-md:hidden" containerClassName="w-fit" iconClassName="max-md:hidden" placeholder="Search in docs" iconPosition="right" icon={<LuSearch />} />
                     <Link href="https://github.com/freitassdev/freitas-ui" target="_blank">
                         <RainbowButton className="max-md:hidden" variant="opaque">
                             <FaGithub className='mr-2 ' />
