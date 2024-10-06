@@ -43,11 +43,12 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
             setIsScrolled(false);
         }
     });
+
     return (
-        <div className={cn("w-full h-20 flex flex-row items-center justify-center top-0 fixed inset-x-0 z-40  duration-300",
-            isScrolled ? "bg-background/70 saturate-100 backdrop-blur-[6px]" : "bg-transparent",
-            isScrolled && !isDocsPage ? "shadow-md" : "")}>
-            <nav className="flex items-center justify-between  px-2  transition-all  max-md:w-full max-md:px-4 md:w-[800px] lg:w-[1000px] xl:w-[1300px] 2xl:w-[1500px]" ref={navRef}>
+        <div className={cn("w-full h-20 flex flex-row items-center justify-center top-0 fixed inset-x-0 z-40 duration-300",
+            isScrolled && !isDocsPage ? "bg-background/70 saturate-100 backdrop-blur-[6px] shadow-md" : "bg-transparent", 
+            isDocsPage ? "bg-background/70 saturate-100 backdrop-blur-[6px]" : "")}>
+            <nav className="flex items-center justify-between px-2 transition-all max-md:w-full max-md:px-4 md:w-[800px] lg:w-[1000px] xl:w-[1300px] 2xl:w-[1500px]" ref={navRef}>
                 <div className="flex flex-row items-center justify-center gap-3">
                     <Link href="/">
                         <Logo />

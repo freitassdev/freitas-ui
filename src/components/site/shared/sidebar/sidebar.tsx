@@ -3,12 +3,14 @@
 import sidebarItems from "@/constants/sidebar-items";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-
+import { usePathname } from "next/navigation";
+import RainbowButton from '@/components/ui/rainbow-button';
+import Link from 'next/link';
 
 export default function Sidebar() {
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
     const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+    const activeItem = usePathname()
 
     const handleHoverStart = (id: string) => {
         if (hoverTimeout) {
@@ -35,28 +37,39 @@ export default function Sidebar() {
                         </div>
                         <div className="flex flex-col gap-2 w-full">
                             {item.subItems.map((subItem) => (
-                                <motion.button
-                                    onHoverStart={() => handleHoverStart(subItem.id)}
-                                    onHoverEnd={() => handleHoverEnd(subItem.id)}
-                                    className={`group relative px-3 py-0 flex flex-row items-center gap-2 w-full justify-start duration-200 transition-colors ${hoveredItem === subItem.id ? 'text-foreground' : 'text-muted-foreground'
-                                        }`}
-                                    key={subItem.id}
-                                >
-                                    <subItem.icon className="w-4 h-4 text-foreground" />
-                                    <h2>{subItem.title}</h2>
-                                    <AnimatePresence>
-                                        {hoveredItem === subItem.id && (
-                                            <motion.span
-                                                layoutId="nav-item"
-                                                className="absolute bg-card inset-0 rounded-lg w-full h-full -z-10"
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                transition={{ duration: 0.2 }}
-                                            />
-                                        )}
-                                    </AnimatePresence>
-                                </motion.button>
+                                activeItem === subItem.href ? (
+                                    <RainbowButton
+                                        key={subItem.id}
+                                        variant="opaque"
+                                        className="w-full justify-start px-3 py-0"
+                                    >
+                                        <subItem.icon className="w-4 h-4 text-white mr-2" />
+                                        <span className="text-white">{subItem.title}</span>
+                                    </RainbowButton>
+                                ) : (
+                                    <Link href={subItem.href} key={subItem.id}>
+                                        <motion.button
+                                            onHoverStart={() => handleHoverStart(subItem.id)}
+                                            onHoverEnd={() => handleHoverEnd(subItem.id)}
+                                            className={`group relative px-3 py-0 flex flex-row items-center gap-2 w-full justify-start duration-200 transition-colors ${hoveredItem === subItem.id ? 'text-foreground' : 'text-muted-foreground'}`}
+                                        >
+                                            <subItem.icon className="w-4 h-4 text-muted-foreground" />
+                                            <h2>{subItem.title}</h2>
+                                            <AnimatePresence>
+                                                {hoveredItem === subItem.id && (
+                                                    <motion.span
+                                                        layoutId="nav-item"
+                                                        className="absolute bg-card inset-0 rounded-lg w-full h-full -z-10"
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        exit={{ opacity: 0 }}
+                                                        transition={{ duration: 0.2 }}
+                                                    />
+                                                )}
+                                            </AnimatePresence>
+                                        </motion.button>
+                                    </Link>
+                                )
                             ))}
                         </div>
                     </div>
