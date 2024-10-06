@@ -3,8 +3,8 @@ import { GoRocket } from "react-icons/go";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { MdInstallDesktop } from "react-icons/md";
-import { LuCheckSquare, LuHaze, LuListChecks, LuPalette, LuTextCursorInput, LuToggleRight } from "react-icons/lu";
+import { MdInstallDesktop, MdOutlineDocumentScanner } from "react-icons/md";
+import { LuCheckSquare, LuComponent, LuHaze, LuListChecks, LuPalette, LuTextCursorInput, LuToggleRight } from "react-icons/lu";
 import { IoMdRadioButtonOn } from "react-icons/io";
 import { BsMenuButtonFill } from "react-icons/bs";
 import { RxButton } from "react-icons/rx";
@@ -52,7 +52,7 @@ const sidebarItems: ISidebarItem[] = [
     {
         id: "forms",
         title: "Forms",
-        Icon: GoRocket,
+        Icon: MdOutlineDocumentScanner,
         subItems: [
             {
                 id: "input",
@@ -95,7 +95,7 @@ const sidebarItems: ISidebarItem[] = [
     {
         id: "buttons",
         title: "Buttons",
-        Icon: GoRocket,
+        Icon: LuComponent,
         subItems: [
             {
                 id: "button",
@@ -139,7 +139,7 @@ export default function Sidebar() {
                     <div className="flex flex-col gap-2 w-full" key={item.id}>
                         <div className="flex flex-row items-center gap-2">
                             <item.Icon className="text-primary" />
-                            <h2>{item.title}</h2>
+                            <h2 className="text-md font-medium">{item.title}</h2>
                         </div>
                         <div className="flex flex-col gap-2 w-full">
                             {item.subItems.map((subItem) => (
