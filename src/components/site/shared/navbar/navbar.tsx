@@ -24,6 +24,7 @@ import { Separator } from "@/components/ui/separator";
 import Button from "@/components/ui/button";
 import { GoRocket } from "react-icons/go";
 import { RxComponent1 } from "react-icons/rx";
+import sidebarItems from "@/constants/sidebar-items";
 
 interface NavbarProps {
     isDocsPage?: boolean;
@@ -42,11 +43,12 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
             setIsScrolled(false);
         }
     });
+
     return (
-        <div className={cn("w-full h-20 flex flex-row items-center justify-center top-0 fixed inset-x-0 z-40  duration-300", 
-        isScrolled ? "bg-background/70 saturate-100 backdrop-blur-[6px]" : "bg-transparent",
-        isScrolled && !isDocsPage ? "shadow-md" : "")}>
-            <nav className="flex items-center justify-between  px-2  transition-all  max-md:w-full max-md:px-4 md:w-[800px] lg:w-[1000px] xl:w-[1300px] 2xl:w-[1500px]" ref={navRef}>
+        <div className={cn("w-full h-20 flex flex-row items-center justify-center top-0 fixed inset-x-0 z-40 duration-300",
+            isScrolled && !isDocsPage ? "bg-background/70 saturate-100 backdrop-blur-[6px] shadow-md" : "bg-transparent", 
+            isDocsPage ? "bg-background/70 saturate-100 backdrop-blur-[6px]" : "")}>
+            <nav className="flex items-center justify-between px-2 transition-all max-md:w-full max-md:px-4 md:w-[800px] lg:w-[1000px] xl:w-[1300px] 2xl:w-[1500px]" ref={navRef}>
                 <div className="flex flex-row items-center justify-center gap-3">
                     <Link href="/">
                         <Logo />
@@ -102,17 +104,43 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
                                             iconPosition="left"
                                             icon={<LuSearch />} />
                                         <Separator variant="rainbow" className="w-full my-4" />
-
-                                        <Link href="/docs/getting-started" className="w-full" target="_blank">
-                                            <Button className="w-full flex md:hidden justify-start" icon={<GoRocket />}>
-                                                Getting Started
-                                            </Button>
-                                        </Link>
-                                        <Link href="/docs/components" className="w-full" target="_blank">
-                                            <Button className="w-full flex md:hidden justify-start" icon={<RxComponent1 />}>
-                                                Components
-                                            </Button>
-                                        </Link>
+                                        {!isDocsPage && (
+                                            <>
+                                                <Link href="/docs/getting-started" className="w-full" target="_blank">
+                                                    <Button className="w-full flex md:hidden justify-start" icon={<GoRocket />}>
+                                                        Getting Started
+                                                    </Button>
+                                                </Link>
+                                                <Link href="/docs/components" className="w-full" target="_blank">
+                                                    <Button className="w-full flex md:hidden justify-start" icon={<RxComponent1 />}>
+                                                        Components
+                                                    </Button>
+                                                </Link>
+                                            </>
+                                        )}
+                                        {isDocsPage && (
+                                            <>
+                                                {sidebarItems.map((item) => (
+                                                    <div className="flex flex-col gap-2 w-full" key={item.id}>
+                                                        <div className="flex flex-row items-center gap-2">
+                                                            <item.Icon className="text-primary" />
+                                                            <h2 className="text-md font-medium">{item.title}</h2>
+                                                        </div>
+                                                        <div className="flex flex-col gap-2 w-full">
+                                                            {item.subItems.map((subItem) => (
+                                                                <button
+                                                                    className={`group relative px-3 py-0 flex flex-row items-center gap-2 w-full justify-start text-foreground`}
+                                                                    key={subItem.id}
+                                                                >
+                                                                    <subItem.icon className="w-4 h-4 text-foreground" />
+                                                                    <h2>{subItem.title}</h2>
+                                                                </button>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                                 <ExpandableSidebarFooter>
