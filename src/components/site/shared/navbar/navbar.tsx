@@ -79,8 +79,8 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
                                     <span className="sr-only">toggle menu</span>
                                 </RainbowButton>
                             </ExpandableSidebarTrigger>
-                            <ExpandableSidebarContent className="flex flex-col justify-between">
-                                <div className="flex flex-col w-full ">
+                            <ExpandableSidebarContent className="flex flex-col justify-between h-full">
+                                <div className="flex flex-col w-full h-full">
                                     <ExpandableSidebarHeader className="flex flex-row items-center justify-between">
                                         <Link href="/">
                                             <Logo />
@@ -91,7 +91,7 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
                                             </RainbowButton>
                                         </ExpandableSidebarClose>
                                     </ExpandableSidebarHeader>
-                                    <div className="flex flex-col items-center justify-center gap-2 w-full mt-4">
+                                    <div className="flex flex-col items-center justify-start gap-2 w-full mt-4 overflow-y-auto flex-grow">
                                         <Link href="https://github.com/freitassdev/freitas-ui" className="w-full" target="_blank">
                                             <RainbowButton className="w-full flex md:hidden justify-between" variant="opaque">
                                                 <FaGithub className='mr-2 ' />
@@ -144,7 +144,7 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
                                     </div>
                                 </div>
                                 <ExpandableSidebarFooter>
-                                    <ThemeToggle className="flex md:hidden" />
+                                    <ThemeToggle className="flex md:hidden !absolute bottom-6" />
                                 </ExpandableSidebarFooter>
                             </ExpandableSidebarContent>
                         </ExpandableSidebar>

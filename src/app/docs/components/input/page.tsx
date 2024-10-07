@@ -7,7 +7,7 @@ export default function InputDocsPage() {
         <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
                 <GradientText text="Input" className="text-6xl font-extrabold" />
-                <p>
+                <p className="text-lg text-primary">
                     Input is a component that allows users to input text into a form.
                 </p>
             </div>
