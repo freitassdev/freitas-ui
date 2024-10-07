@@ -1,7 +1,7 @@
 import CodeFragment from "@/components/site/shared/code-fragment/code-fragment";
 import ComponentTabs from "@/components/site/shared/component-tabs/component-tabs";
 import GradientText from "@/components/ui/gradient-text";
-
+import Input from "@/components/ui/input";
 export default function InputDocsPage() {
     return (
         <div className="flex flex-col gap-5">
@@ -12,8 +12,12 @@ export default function InputDocsPage() {
                 </p>
             </div>
             <ComponentTabs>
-                teste
+                <Input
+                    placeholder="Placeholder..."
+                    className="max-w-sm"
+                    containerClassName="max-w-sm" />
             </ComponentTabs>
+            <GradientText text="Installation (CLI)" className="text-xl font-extrabold" />
             <CodeFragment copyable={true}>
                 npx freitas-ui add input
             </CodeFragment>
