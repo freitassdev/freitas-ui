@@ -48,7 +48,7 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
         <div className={cn("w-full h-20 flex flex-row items-center justify-center top-0 fixed inset-x-0 z-40 duration-300",
             isScrolled && !isDocsPage ? "bg-background/70 saturate-100 backdrop-blur-[6px] shadow-md" : "bg-transparent", 
             isDocsPage ? "bg-background/70 saturate-100 backdrop-blur-[6px]" : "")}>
-            <nav className="flex items-center justify-between px-2 transition-all max-md:w-full max-md:px-4 md:w-[800px] lg:w-[1000px] xl:w-[1300px] 2xl:w-[1500px]" ref={navRef}>
+            <nav className="flex items-center justify-between max-sm:px-2 px-2 transition-all max-md:w-full max-md:px-4 md:w-[800px] lg:w-[1000px] xl:w-[1300px] 2xl:w-[1500px]" ref={navRef}>
                 <div className="flex flex-row items-center justify-center gap-3">
                     <Link href="/">
                         <Logo />
@@ -79,11 +79,11 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
                                     <span className="sr-only">toggle menu</span>
                                 </RainbowButton>
                             </ExpandableSidebarTrigger>
-                            <ExpandableSidebarContent className="flex flex-col justify-between">
-                                <div className="flex flex-col w-full ">
+                            <ExpandableSidebarContent className="flex flex-col justify-between h-full">
+                                <div className="flex flex-col w-full h-full">
                                     <ExpandableSidebarHeader className="flex flex-row items-center justify-between">
                                         <Link href="/">
-                                            <Logo />
+                                            <Logo className="max-sm:h-6" />
                                         </Link>
                                         <ExpandableSidebarClose asChild>
                                             <RainbowButton variant="opaque" className="max-w-9">
@@ -91,7 +91,7 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
                                             </RainbowButton>
                                         </ExpandableSidebarClose>
                                     </ExpandableSidebarHeader>
-                                    <div className="flex flex-col items-center justify-center gap-2 w-full mt-4">
+                                    <div className="flex flex-col items-center justify-start gap-2 w-full mt-4 overflow-y-auto flex-grow">
                                         <Link href="https://github.com/freitassdev/freitas-ui" className="w-full" target="_blank">
                                             <RainbowButton className="w-full flex md:hidden justify-between" variant="opaque">
                                                 <FaGithub className='mr-2 ' />
@@ -144,7 +144,7 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
                                     </div>
                                 </div>
                                 <ExpandableSidebarFooter>
-                                    <ThemeToggle className="flex md:hidden" />
+                                    <ThemeToggle className="flex md:hidden !absolute bottom-6" />
                                 </ExpandableSidebarFooter>
                             </ExpandableSidebarContent>
                         </ExpandableSidebar>
