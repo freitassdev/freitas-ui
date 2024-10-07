@@ -83,7 +83,7 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
                                 <div className="flex flex-col w-full h-full">
                                     <ExpandableSidebarHeader className="flex flex-row items-center justify-between">
                                         <Link href="/">
-                                            <Logo />
+                                            <Logo className="max-sm:h-6" />
                                         </Link>
                                         <ExpandableSidebarClose asChild>
                                             <RainbowButton variant="opaque" className="max-w-9">
