@@ -29,6 +29,8 @@ export default function CodeFragment({ children, language = 'bash', className, c
                 <SyntaxHighlighter
                     language={language}
                     style={syntaxTheme}
+                    wrapLines={true}
+                    wrapLongLines={true}
                     customStyle={{
                         backgroundColor: 'transparent',
                         background: 'transparent',
@@ -40,7 +42,7 @@ export default function CodeFragment({ children, language = 'bash', className, c
                 </SyntaxHighlighter>
                 {copyable && (
                     <RainbowButton size="icon"
-                        className=" h-9 w-9"
+                        className=" h-9 w-9 flex-shrink-0"
                         variant="opaque" 
                         onClick={() => {
                             navigator.clipboard.writeText(String(children));
