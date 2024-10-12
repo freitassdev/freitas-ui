@@ -1,4 +1,5 @@
 import CodeFragment from "@/components/site/shared/code-fragment/code-fragment";
+import ComponentProps from "@/components/site/shared/component-props/component-props";
 import ComponentTabs from "@/components/site/shared/component-tabs/component-tabs";
 import GradientText from "@/components/ui/gradient-text";
 import Input from "@/components/ui/input";
@@ -21,6 +22,34 @@ export default function InputDocsPage() {
             <CodeFragment copyable={true}>
                 npx freitas-ui add input
             </CodeFragment>
+            <ComponentProps props={[
+                {
+                    prop: "...",
+                    type: "InputHTMLAttributes<HTMLInputElement>",
+                    description: "All the props from the native input element."
+                },
+                {
+                    prop: "containerClassName",
+                    type: "string",
+                    description: "The class name for the container of the input."
+                },
+                {
+                    prop: "className",
+                    type: "string",
+                    description: "The class name for the input."
+                },
+                {
+                    prop: "icon",
+                    type: "React.ReactNode",
+                    description: "The icon to be displayed inside the input."
+                },
+                {
+                    prop: "iconPosition",
+                    type: "left | right",
+                    description: "The position of the icon inside the input.",
+                    default: "left"
+                }
+            ]} />
         </div>
     )
 }
