@@ -3,8 +3,6 @@ import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import Logo from "@/components/site/misc/logo";
-import Input from "@/components/ui/input";
-import { LuSearch } from "react-icons/lu";
 import Link from "next/link";
 import ThemeToggle from "../../misc/theme-toggle";
 import RainbowButton from "@/components/ui/rainbow-button";
@@ -25,6 +23,7 @@ import Button from "@/components/ui/button";
 import { GoRocket } from "react-icons/go";
 import { RxComponent1 } from "react-icons/rx";
 import sidebarItems from "@/constants/sidebar-items";
+import Search from "./components/search";
 
 interface NavbarProps {
     isDocsPage?: boolean;
@@ -46,7 +45,7 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
 
     return (
         <div className={cn("w-full h-20 flex flex-row items-center justify-center top-0 fixed inset-x-0 z-40 duration-300",
-            isScrolled && !isDocsPage ? "bg-background/70 saturate-100 backdrop-blur-[6px] shadow-md" : "bg-transparent", 
+            isScrolled && !isDocsPage ? "bg-background/70 saturate-100 backdrop-blur-[6px] shadow-md" : "bg-transparent",
             isDocsPage ? "bg-background/70 saturate-100 backdrop-blur-[6px]" : "")}>
             <nav className="flex items-center justify-between max-sm:px-2 px-2 transition-all max-md:w-full max-md:px-4 md:w-[800px] lg:w-[1000px] xl:w-[1300px] 2xl:w-[1500px]" ref={navRef}>
                 <div className="flex flex-row items-center justify-center gap-3">
@@ -63,7 +62,7 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
                             Components
                         </Link>
                     </div>
-                    <Input className="max-md:hidden" containerClassName="w-fit" iconClassName="max-md:hidden" placeholder="Search in docs" iconPosition="right" icon={<LuSearch />} />
+                    <Search className="max-md:hidden"/>
                     <Link href="https://github.com/freitassdev/freitas-ui" target="_blank">
                         <RainbowButton className="max-md:hidden" variant="opaque">
                             <FaGithub className='mr-2 ' />
@@ -98,11 +97,7 @@ export default function Navbar({ isDocsPage = false }: NavbarProps) {
                                                 See on GitHub
                                             </RainbowButton>
                                         </Link>
-                                        <Input
-                                            className="block w-full md:hidden"
-                                            placeholder="Search in docs"
-                                            iconPosition="left"
-                                            icon={<LuSearch />} />
+                                        <Search />
                                         <Separator variant="rainbow" className="w-full my-4" />
                                         {!isDocsPage && (
                                             <>

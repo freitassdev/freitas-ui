@@ -33,16 +33,19 @@ interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'siz
     VariantProps<typeof buttonVariants> {
     icon?: React.ReactNode;
     iconPosition?: "left" | "right";
+    iconClassName?: string | undefined;
+    containerClassName?: string | undefined;
 }
 
-export default function Button({ className, variant, size, icon, iconPosition = "left", children, ...props }: ButtonProps) {
+export default function Button({ className, containerClassName, iconClassName, variant, size, icon, iconPosition = "left", children, ...props }: ButtonProps) {
     const Icon = icon;
     return (
-        <div className="relative">
+        <div className={cn("relative", containerClassName)}>
             {icon && (
                 <div className={cn(
                     "absolute top-1/2 -translate-y-1/2 text-muted-foreground",
-                    iconPosition === "left" ? "left-3" : "right-3"
+                    iconPosition === "left" ? "left-3" : "right-3",
+                    iconClassName
                 )}>
                     {Icon}
                 </div>
