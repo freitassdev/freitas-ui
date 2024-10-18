@@ -10,6 +10,7 @@ interface ISidebarSubitem {
     title: string;
     href: string;
     icon: React.ElementType;
+    badge?: string;
 }
 
 interface ISidebarItem {
@@ -60,7 +61,8 @@ const sidebarItems: ISidebarItem[] = [
                 id: "multi-select",
                 title: "Multi Select",
                 href: "/docs/components/multi-select",
-                icon: LuListChecks
+                icon: LuListChecks,
+                badge: "Updated"
             },
             {
                 id: "select",
@@ -78,7 +80,8 @@ const sidebarItems: ISidebarItem[] = [
                 id: "radio",
                 title: "Radio",
                 href: "/docs/components/radio",
-                icon: IoMdRadioButtonOn
+                icon: IoMdRadioButtonOn,
+                badge: "New"
             },
             {
                 id: "switch",
