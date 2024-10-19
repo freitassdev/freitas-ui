@@ -11,7 +11,7 @@ const DialogTrigger = DialogPrimitive.Trigger;
 const DialogClose = DialogPrimitive.Close;
 const dialogVariants = {
     closed: { opacity: 0, scale: 0, y: 100, filter: "blur(5px)" },
-    open: { opacity: 1, scale: 1, y: 0, filter: "blur(0px)"  }
+    open: { opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }
 };
 
 const overlayVariants = {
@@ -41,9 +41,12 @@ function getEnsureDialogContainer() {
 
     return dialogContainer;
 }
+interface DialogContentProps extends DialogPrimitive.DialogContentProps {
+    showClose?: boolean;
+}
 
-const DialogContent = forwardRef<HTMLDivElement, DialogPrimitive.DialogContentProps>(
-    ({ className, children, ...props }, ref) => {
+const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
+    ({ className, showClose, children, ...props }, ref) => {
         const isOpen = useContext(DialogOpenContext);
         return (
             <AnimatePresence>
@@ -72,14 +75,16 @@ const DialogContent = forwardRef<HTMLDivElement, DialogPrimitive.DialogContentPr
                                     type: "spring",
                                     stiffness: 200,
                                     damping: 20,
-                                    }}
+                                }}
                                 className={cn("z-50 fixed bg-background p-6 rounded-2xl shadow-lg", className)}
                             >
                                 {children}
-                                <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-                                    <IoClose className="h-4 w-4" />
-                                    <span className="sr-only">Close</span>
-                                </DialogPrimitive.Close>
+                                {showClose && (
+                                    <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+                                        <IoClose className="h-4 w-4" />
+                                        <span className="sr-only">Close</span>
+                                    </DialogPrimitive.Close>
+                                )}
                             </motion.div>
                         </DialogPrimitive.Content>
                     </DialogPortal>
@@ -95,7 +100,7 @@ const DialogHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
     <div
         className={cn(
-            "flex flex-col space-y-1.5 text-center sm:text-left",
+            "flex flex-col text-center sm:text-left",
             className
         )}
         {...props}
