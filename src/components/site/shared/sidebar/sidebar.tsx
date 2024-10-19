@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import RainbowButton from '@/components/ui/rainbow-button';
 import Link from 'next/link';
+import Badge from "@/components/ui/badge";
 
 export default function Sidebar() {
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -35,7 +36,7 @@ export default function Sidebar() {
                             <item.Icon className="text-primary" />
                             <h2 className="text-md font-medium">{item.title}</h2>
                         </div>
-                        <div className="flex flex-col gap-2 w-full">
+                        <div className="flex flex-col gap-1 w-full">
                             {item.subItems.map((subItem) => (
                                 activeItem === subItem.href ? (
                                     <RainbowButton
@@ -51,10 +52,15 @@ export default function Sidebar() {
                                         <motion.button
                                             onHoverStart={() => handleHoverStart(subItem.id)}
                                             onHoverEnd={() => handleHoverEnd(subItem.id)}
-                                            className={`group relative px-3 py-0 flex flex-row items-center gap-2 w-full justify-start duration-200 transition-colors ${hoveredItem === subItem.id ? 'text-foreground' : 'text-muted-foreground'}`}
+                                            className={`group relative px-3 py-1 flex flex-row items-center gap-2 w-full justify-between duration-200 transition-colors ${hoveredItem === subItem.id ? 'text-foreground' : 'text-muted-foreground'}`}
                                         >
-                                            <subItem.icon className="w-4 h-4 text-muted-foreground" />
-                                            <h2>{subItem.title}</h2>
+                                            <div className="flex flex-row items-center gap-2">
+                                                <subItem.icon className="w-4 h-4 text-muted-foreground" />
+                                                <h2>{subItem.title}</h2>
+                                            </div>
+                                            {subItem.badge && (
+                                                <Badge variant="rainbow" opaque={false}>{subItem.badge}</Badge>
+                                            )}
                                             <AnimatePresence>
                                                 {hoveredItem === subItem.id && (
                                                     <motion.span

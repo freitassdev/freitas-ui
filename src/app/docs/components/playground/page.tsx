@@ -1,9 +1,19 @@
+'use client'
 import CodeFragment from "@/components/site/shared/code-fragment/code-fragment";
 import ComponentProps from "@/components/site/shared/component-props/component-props";
 import ComponentTabs from "@/components/site/shared/component-tabs/component-tabs";
 import GradientText from "@/components/ui/gradient-text";
-import Input from "@/components/ui/input";
-export default function InputDocsPage() {
+import Button from "@/components/ui/button"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+export default function PlaygroundDocsPage() {
     return (
         <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
@@ -13,10 +23,30 @@ export default function InputDocsPage() {
                 </p>
             </div>
             <ComponentTabs>
-                <Input
-                    placeholder="Placeholder..."
-                    className="max-w-sm"
-                    containerClassName="max-w-sm" />
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <Button variant="outline">Edit Profile</Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                        <DialogHeader>
+                            <DialogTitle>Edit profile</DialogTitle>
+                            <DialogDescription>
+                                Make changes to your profile here. Click save when youre done.
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                teste 
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                teste
+                            </div>
+                        </div>
+                        <DialogFooter>
+                            <Button type="submit">Save changes</Button>
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
             </ComponentTabs>
             <GradientText text="Installation (CLI)" className="text-xl font-extrabold" />
             <CodeFragment copyable={true}>

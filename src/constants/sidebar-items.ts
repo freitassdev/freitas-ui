@@ -5,14 +5,16 @@ import { BsMenuButtonFill } from "react-icons/bs";
 import { RxButton } from "react-icons/rx";
 import { RiSparkling2Line } from "react-icons/ri";
 import { GoRocket } from "react-icons/go";
-interface ISidebarSubitem {
+export interface ISidebarSubitem {
     id: string;
     title: string;
     href: string;
     icon: React.ElementType;
+    badge?: string;
+    aliases?: string[];
 }
 
-interface ISidebarItem {
+export interface ISidebarItem {
     id: string;
     title: string;
     Icon: React.ElementType;
@@ -29,19 +31,22 @@ const sidebarItems: ISidebarItem[] = [
                 id: "introduction",
                 title: "Introduction",
                 href: "/docs/getting-started/introduction",
-                icon: LuHaze
+                icon: LuHaze,
+                aliases: ["start", "about"]
             },
             {
                 id: "installation",
                 title: "Installation",
                 href: "/docs/getting-started/installation",
-                icon: MdInstallDesktop
+                icon: MdInstallDesktop,
+                aliases: ['download', 'nextjs', 'react', 'downloads']
             },
             {
                 id: "theming",
                 title: "Theming",
                 href: "/docs/getting-started/theming",
-                icon: LuPalette
+                icon: LuPalette,
+                aliases: ['colors', 'custom', 'customize', 'color']
             }
         ]
     },
@@ -54,13 +59,16 @@ const sidebarItems: ISidebarItem[] = [
                 id: "input",
                 title: "Input",
                 href: "/docs/components/input",
-                icon: LuTextCursorInput
+                icon: LuTextCursorInput,
+                aliases: ['text input', 'text', 'textinput', 'basic']
             },
             {
                 id: "multi-select",
                 title: "Multi Select",
                 href: "/docs/components/multi-select",
-                icon: LuListChecks
+                icon: LuListChecks,
+                badge: "Updated",
+                aliases: ['select', 'menu', 'multi', 'selection']
             },
             {
                 id: "select",
@@ -78,7 +86,8 @@ const sidebarItems: ISidebarItem[] = [
                 id: "radio",
                 title: "Radio",
                 href: "/docs/components/radio",
-                icon: IoMdRadioButtonOn
+                icon: IoMdRadioButtonOn,
+                badge: "New"
             },
             {
                 id: "switch",
@@ -97,13 +106,15 @@ const sidebarItems: ISidebarItem[] = [
                 id: "button",
                 title: "Button",
                 href: "/docs/components/button",
-                icon: RxButton
+                icon: RxButton,
+                aliases: ['buttons']
             },
             {
                 id: "rainbow-button",
                 title: "Rainbow Button",
                 href: "/docs/components/rainbow-button",
-                icon: RiSparkling2Line  
+                icon: RiSparkling2Line,
+                aliases: ['buttons', 'rainbow', 'rainbow button']
             }
         ]
     }
